@@ -29,7 +29,10 @@ class ArticleRepository @Inject constructor(
             }
             override fun shouldFetch(data: List<Article>?): Boolean = true
             override suspend fun createCall(): Flow<ApiResponse<List<ArticlesItem>>> = remoteDataSource.getTopArticles()
-            override suspend fun saveCallResult(data: List<ArticlesItem>) {}
+            override suspend fun saveCallResult(data: List<ArticlesItem>) {
+                val articles = DataMapper.mapResponseToEntities(data)
+                localDataSource.insertArticles(articles)
+            }
         }.asFlow()
 
 
