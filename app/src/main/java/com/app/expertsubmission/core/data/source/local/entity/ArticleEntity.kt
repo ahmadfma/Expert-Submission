@@ -1,0 +1,39 @@
+package com.app.expertsubmission.core.data.source.local.entity
+
+import androidx.annotation.NonNull
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.app.expertsubmission.core.data.source.remote.response.Source
+
+@Entity(tableName = "article")
+data class ArticleEntity(
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "urlToImage")
+    val urlToImage: String? = null,
+
+    @ColumnInfo(name = "publishedAt")
+    val publishedAt: String? = null,
+
+    @ColumnInfo(name = "author")
+    val author: String? = null,
+
+    @ColumnInfo(name = "description")
+    val description: String? = null,
+
+    @ColumnInfo(name = "source")
+    val source: Source? = null,
+
+    @ColumnInfo(name = "title")
+    val title: String? = null,
+
+    @ColumnInfo(name = "url")
+    val url: String? = null,
+
+    @ColumnInfo(name = "content")
+    val content: Any? = null,
+
+    @ColumnInfo(name = "isFavorite")
+    var isFavorite: Boolean = false
+)
