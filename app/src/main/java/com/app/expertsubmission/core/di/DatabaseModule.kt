@@ -22,6 +22,7 @@ class DatabaseModule {
         ArticleDatabase::class.java, "Article.db"
     ).fallbackToDestructiveMigration().build()
 
+    @Provides
     fun provideArticleDao(articleDatabase: ArticleDatabase): ArticleDao = articleDatabase.articleDao()
 
 }

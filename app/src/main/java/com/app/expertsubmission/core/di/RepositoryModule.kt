@@ -1,6 +1,6 @@
 package com.app.expertsubmission.core.di
 
-import com.app.expertsubmission.core.data.ArticleRepository
+import com.app.expertsubmission.core.data.repository.ArticleRepository
 import com.app.expertsubmission.core.domain.repository.IArticleRepository
 import dagger.Binds
 import dagger.Module

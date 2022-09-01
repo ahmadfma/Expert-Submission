@@ -11,7 +11,7 @@ data class ArticleEntity(
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "urlToImage")
-    val urlToImage: String? = null,
+    val urlToImage: String,
 
     @ColumnInfo(name = "publishedAt")
     val publishedAt: String? = null,
@@ -22,8 +22,8 @@ data class ArticleEntity(
     @ColumnInfo(name = "description")
     val description: String? = null,
 
-    @ColumnInfo(name = "source")
-    val source: Source? = null,
+    @ColumnInfo(name = "sourceName")
+    val sourceName: String? = null,
 
     @ColumnInfo(name = "title")
     val title: String? = null,
@@ -32,7 +32,7 @@ data class ArticleEntity(
     val url: String? = null,
 
     @ColumnInfo(name = "content")
-    val content: Any? = null,
+    val content: String? = null,
 
     @ColumnInfo(name = "isFavorite")
     var isFavorite: Boolean = false

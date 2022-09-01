@@ -2,7 +2,7 @@ package com.app.expertsubmission.core.data.source.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class NewsResponse(
+data class ArticlesResponse(
 
 	@field:SerializedName("totalResults")
 	val totalResults: Int? = null,
@@ -32,7 +32,7 @@ data class ArticlesItem(
 	val author: String? = null,
 
 	@field:SerializedName("urlToImage")
-	val urlToImage: String? = null,
+	val urlToImage: String,
 
 	@field:SerializedName("description")
 	val description: String? = null,
@@ -47,5 +47,5 @@ data class ArticlesItem(
 	val url: String? = null,
 
 	@field:SerializedName("content")
-	val content: Any? = null
+	val content: String? = null
 )
