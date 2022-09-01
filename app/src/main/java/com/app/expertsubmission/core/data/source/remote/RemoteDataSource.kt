@@ -19,6 +19,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         try {
             val response = apiService.getTopArticles()
             val articles = response.articles
+            Log.d("RemoteDataSource", "getTopArticles: $articles")
             if(articles.isEmpty()) {
                 emit(ApiResponse.Empty)
             } else {

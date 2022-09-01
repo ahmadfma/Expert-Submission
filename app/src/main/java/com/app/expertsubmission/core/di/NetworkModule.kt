@@ -22,6 +22,7 @@ class NetworkModule {
         .readTimeout(120, TimeUnit.SECONDS)
         .build()
 
+    @Provides
     fun provideApiService(client: OkHttpClient): ApiService {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://newsapi.org/v2/")
