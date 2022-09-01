@@ -1,7 +1,6 @@
 package com.app.expertsubmission.core.data
 
 import com.app.expertsubmission.core.data.source.remote.network.ApiResponse
-import com.dicoding.tourismapp.core.data.Resource
 import kotlinx.coroutines.flow.*
 
 abstract class NetworkBoundResource<ResultType, RequestType> {

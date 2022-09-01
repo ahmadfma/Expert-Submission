@@ -3,6 +3,7 @@ package com.app.expertsubmission.core.data.source.remote
 import android.util.Log
 import com.app.expertsubmission.core.data.source.remote.network.ApiResponse
 import com.app.expertsubmission.core.data.source.remote.network.ApiService
+import com.app.expertsubmission.core.data.source.remote.response.ArticlesItem
 import com.app.expertsubmission.core.domain.model.Articles
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -14,11 +15,11 @@ import javax.inject.Singleton
 @Singleton
 class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
 
-    suspend fun getTopArticles(): Flow<ApiResponse<List<Articles?>>> = flow {
+    suspend fun getTopArticles(): Flow<ApiResponse<List<ArticlesItem>>> = flow {
         try {
             val response = apiService.getTopArticles()
             val articles = response.articles
-            if(articles.isNullOrEmpty()) {
+            if(articles.isEmpty()) {
                 emit(ApiResponse.Empty)
             } else {
                 emit(ApiResponse.Success(articles))
