@@ -19,6 +19,9 @@ class ArticleAdapter(private val onClick: (Article) -> Unit): RecyclerView.Adapt
             articleTitle.text = article.title
             articleDesc.text = article.description
             articleSource.text = StringBuilder().append("${article.sourceName} - ${article.publishedAt}")
+            this.root.setOnClickListener {
+                onClick(article)
+            }
         }
     }
 
