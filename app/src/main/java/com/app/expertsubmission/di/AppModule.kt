@@ -1,7 +1,7 @@
 package com.app.expertsubmission.di
 
-import com.app.expertsubmission.core.domain.usecase.ArticleInteractor
-import com.app.expertsubmission.core.domain.usecase.ArticleUseCase
+import com.app.core.domain.usecase.ArticleInteractor
+import com.app.core.domain.usecase.ArticleUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

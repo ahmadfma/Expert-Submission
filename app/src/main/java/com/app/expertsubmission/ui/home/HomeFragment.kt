@@ -9,8 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.app.expertsubmission.core.data.Resource
-import com.app.expertsubmission.core.ui.ArticleAdapter
+import com.app.core.ui.ArticleAdapter
 import com.app.expertsubmission.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,14 +40,14 @@ class HomeFragment : Fragment() {
 
         viewModel.topArticles.observe(viewLifecycleOwner) {
             when(it) {
-                is Resource.Loading -> {
+                is com.app.core.data.Resource.Loading -> {
                     showProgressBar(true)
                 }
-                is Resource.Error -> {
+                is com.app.core.data.Resource.Error -> {
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     Log.e(TAG, "topArticles: error = ${it.message}")
                 }
-                is Resource.Success -> {
+                is com.app.core.data.Resource.Success -> {
                     showProgressBar(false)
                     it.data?.let { it1 -> articleAdapter.setData(it1) }
                 }
