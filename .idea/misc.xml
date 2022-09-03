@@ -21,6 +21,9 @@
         <entry key="..\:/Me/Android/ExpertSubmission/core/src/main/res/drawable/ic_fav_white.xml" value="0.192" />
         <entry key="..\:/Me/Android/ExpertSubmission/core/src/main/res/layout/favorite_button.xml" value="0.25833333333333336" />
         <entry key="..\:/Me/Android/ExpertSubmission/core/src/main/res/layout/item_article.xml" value="0.259375" />
+        <entry key="..\:/Me/Android/ExpertSubmission/favorite/src/main/res/layout/activity_favorite.xml" value="0.259375" />
+        <entry key="..\:/Me/Android/ExpertSubmission/favorite/src/main/res/layout/fragment_favorite.xml" value="0.259375" />
+        <entry key="..\:/Me/Android/ExpertSubmission/favorite/src/main/res/layout/fragment_list_favorite.xml" value="0.259375" />
       </map>
     </option>
   </component>
