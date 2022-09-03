@@ -6,4 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface ArticleUseCase {
     fun getTopArticles(): Flow<Resource<List<Article>>>
+    fun getFavoriteArticles(): Flow<List<Article>>
+    fun setFavoriteArticle(article: Article, state: Boolean)
 }

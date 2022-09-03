@@ -8,4 +8,6 @@ import javax.inject.Inject
 
 class ArticleInteractor @Inject constructor(private val articleRepository: IArticleRepository) : ArticleUseCase {
     override fun getTopArticles(): Flow<Resource<List<Article>>> = articleRepository.getTopArticles()
+    override fun getFavoriteArticles(): Flow<List<Article>> = articleRepository.getFavoriteArticles()
+    override fun setFavoriteArticle(article: Article, state: Boolean) = articleRepository.setFavoriteArticle(article, state)
 }

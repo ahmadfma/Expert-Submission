@@ -34,5 +34,16 @@ class ArticleRepository @Inject constructor(
             }
         }.asFlow()
 
+    override fun getFavoriteArticles(): Flow<List<Article>> {
+        return localDataSource.getFavoriteArticle().map {
+            DataMapper.mapEntitiesToDomain(it)
+        }
+    }
+
+    override fun setFavoriteArticle(article: Article, state: Boolean) {
+        val entity = DataMapper.mapDomainToEntity(article)
+        appExecutors.diskIO().execute { localDataSource.setFavoriteArticle(entity, state) }
+    }
+
 
 }
