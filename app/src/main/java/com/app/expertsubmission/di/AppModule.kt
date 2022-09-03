@@ -2,16 +2,16 @@ package com.app.expertsubmission.di
 
 import com.app.core.domain.usecase.ArticleInteractor
 import com.app.core.domain.usecase.ArticleUseCase
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
+import com.app.expertsubmission.ui.detail.DetailViewModel
+import com.app.expertsubmission.ui.home.HomeViewModel
+import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 
-@Module
-@InstallIn(ViewModelComponent::class)
-abstract class AppModule {
+val useCaseModule = module {
+    factory<ArticleUseCase> { ArticleInteractor(get()) }
+}
 
-    @Binds
-    abstract fun provideArticleUseCase(articleInteractor: ArticleInteractor): ArticleUseCase
-
+val viewModelModule = module {
+    viewModel { HomeViewModel(get()) }
+    viewModel { DetailViewModel(get()) }
 }
