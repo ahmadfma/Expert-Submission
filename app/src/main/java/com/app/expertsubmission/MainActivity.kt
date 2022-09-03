@@ -3,6 +3,7 @@ package com.app.expertsubmission
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.SearchView
 import android.widget.Toast
 import com.google.android.material.navigation.NavigationView
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 if (p0 != null) {
-                    searchArticle(p0)
+                    search(p0)
                 }
                 return true
             }
@@ -59,15 +60,33 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    private fun search(keyword: String) {
+        val destLabel = findNavController(R.id.nav_host_fragment_content_main).currentDestination?.label.toString()
+        if(destLabel == getString(R.string.favorite)) {
+            searchFavoriteArticle(keyword)
+        } else {
+            searchArticle(keyword)
+        }
+    }
+
+    private fun searchFavoriteArticle(keyword: String) = lifecycleScope.launch {
+        Log.d("MainActivity", "searchArticle: favorite")
+        viewModel.searchFavoriteArticle(keyword).observe(this@MainActivity) {
+            if(it.isEmpty()) {
+                Toast.makeText(this@MainActivity, "Tidak Ditemukan", Toast.LENGTH_SHORT).show()
+            } else {
+                Log.d("MainActivity", "searchFavoriteArticle: $it")
+            }
+        }
+    }
+
     private fun searchArticle(keyword: String) =  lifecycleScope.launch {
+        Log.d("MainActivity", "searchArticle: all")
         viewModel.searchArticle(keyword).observe(this@MainActivity) {
             when(it) {
-                is Resource.Loading -> {
-                    Log.d("MainActivity", "searchArticle: Loading")
-                }
+                is Resource.Loading -> {}
                 is Resource.Error -> {
                     Toast.makeText(this@MainActivity, it.message, Toast.LENGTH_SHORT).show()
-                    Log.e("MainActivity", "searchArticle: Error")
                 }
                 is Resource.Success -> {
                     val data = it.data
@@ -79,6 +98,16 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.action_settings -> {
+                val asd = findNavController(R.id.nav_host_fragment_content_main).currentDestination
+                Log.d("MainActivity", "currentDestination: $asd")
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onSupportNavigateUp(): Boolean {

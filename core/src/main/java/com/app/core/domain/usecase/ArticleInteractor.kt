@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.Flow
 class ArticleInteractor (private val articleRepository: IArticleRepository) : ArticleUseCase {
     override fun getTopArticles(): Flow<Resource<List<Article>>> = articleRepository.getTopArticles()
     override suspend fun searchArticle(keyword: String): Flow<Resource<List<Article>>> = articleRepository.searchArticles(keyword)
+    override fun searchFavoriteArticle(keyword: String): Flow<List<ArticleEntity>> = articleRepository.searchFavoriteArticles(keyword)
     override fun getFavoriteArticles(): Flow<List<Article>> = articleRepository.getFavoriteArticles()
     override suspend fun insertArticle(article: ArticleEntity) = articleRepository.insertArticle(article)
     override suspend fun getArticleByImageUrl(imageUrl: String): List<ArticleEntity> = articleRepository.getArticleByImageUrl(imageUrl)

@@ -11,6 +11,8 @@ interface IArticleRepository {
 
     suspend fun searchArticles(keyword: String): Flow<Resource<List<Article>>>
 
+    fun searchFavoriteArticles(keyword: String): Flow<List<ArticleEntity>>
+
     fun getFavoriteArticles(): Flow<List<Article>>
 
     suspend fun insertArticle(article: ArticleEntity)

@@ -16,6 +16,8 @@ class LocalDataSource(private val articleDao: ArticleDao) {
 
     suspend fun getArticleByImageUrl(imageUrl: String) = articleDao.getArticleByImageUrl(imageUrl)
 
+    fun searchFavoriteArticle(keyword: String) = articleDao.searchFavoriteArticles(keyword)
+
     fun setFavoriteArticle(article: ArticleEntity, newState: Boolean) {
         article.isFavorite = newState
         articleDao.updateArticle(article)

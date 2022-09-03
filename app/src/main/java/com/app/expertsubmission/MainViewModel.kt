@@ -7,7 +7,6 @@ import com.app.core.domain.usecase.ArticleUseCase
 import kotlinx.coroutines.withContext
 
 class MainViewModel(private val articleUseCase: ArticleUseCase): ViewModel() {
-    suspend fun searchArticle(keyword: String) = withContext(viewModelScope.coroutineContext) {
-        articleUseCase.searchArticle(keyword).asLiveData()
-    }
+    suspend fun searchArticle(keyword: String) = articleUseCase.searchArticle(keyword).asLiveData()
+    fun searchFavoriteArticle(keyword: String) = articleUseCase.searchFavoriteArticle(keyword).asLiveData()
 }

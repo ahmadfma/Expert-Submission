@@ -35,6 +35,8 @@ class ArticleRepository constructor(
 
     override suspend fun searchArticles(keyword: String): Flow<Resource<List<Article>>> = remoteDataSource.searchArticles(keyword)
 
+    override fun searchFavoriteArticles(keyword: String): Flow<List<ArticleEntity>> = localDataSource.searchFavoriteArticle(keyword)
+
     override fun getFavoriteArticles(): Flow<List<Article>> {
         return localDataSource.getFavoriteArticle().map {
             DataMapper.mapEntitiesToDomain(it)
