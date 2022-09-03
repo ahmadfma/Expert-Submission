@@ -43,7 +43,7 @@ class ArticleRepository constructor(
 
     override suspend fun insertArticle(article: ArticleEntity) = localDataSource.insertArticle(article)
 
-    override fun getArticleByImageUrl(article: ArticleEntity): List<ArticleEntity> = localDataSource.getArticleByImageUrl(article.urlToImage)
+    override suspend fun getArticleByImageUrl(imageUrl: String): List<ArticleEntity> = localDataSource.getArticleByImageUrl(imageUrl)
 
     override fun setFavoriteArticle(article: Article, state: Boolean) {
         val entity = DataMapper.mapDomainToEntity(article)

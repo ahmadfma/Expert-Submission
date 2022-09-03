@@ -15,7 +15,7 @@ interface IArticleRepository {
 
     suspend fun insertArticle(article: ArticleEntity)
 
-    fun getArticleByImageUrl(article: ArticleEntity): List<ArticleEntity>
+    suspend fun getArticleByImageUrl(imageUrl: String): List<ArticleEntity>
 
     fun setFavoriteArticle(article: Article, state: Boolean)
 

@@ -23,5 +23,5 @@ interface ArticleDao {
     fun updateArticle(article: ArticleEntity)
 
     @Query("SELECT * FROM article WHERE urlToImage = :imageUrl")
-    fun getArticleByImageUrl(imageUrl: String): List<ArticleEntity>
+    suspend fun getArticleByImageUrl(imageUrl: String): List<ArticleEntity>
 }

@@ -10,6 +10,6 @@ interface ArticleUseCase {
     suspend fun searchArticle(keyword: String): Flow<Resource<List<Article>>>
     fun getFavoriteArticles(): Flow<List<Article>>
     suspend fun insertArticle(article: ArticleEntity)
-    fun getArticleByImageUrl(article: ArticleEntity): List<ArticleEntity>
+    suspend fun getArticleByImageUrl(imageUrl: String): List<ArticleEntity>
     fun setFavoriteArticle(article: Article, state: Boolean)
 }

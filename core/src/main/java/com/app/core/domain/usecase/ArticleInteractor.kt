@@ -11,6 +11,6 @@ class ArticleInteractor (private val articleRepository: IArticleRepository) : Ar
     override suspend fun searchArticle(keyword: String): Flow<Resource<List<Article>>> = articleRepository.searchArticles(keyword)
     override fun getFavoriteArticles(): Flow<List<Article>> = articleRepository.getFavoriteArticles()
     override suspend fun insertArticle(article: ArticleEntity) = articleRepository.insertArticle(article)
-    override fun getArticleByImageUrl(article: ArticleEntity): List<ArticleEntity> = articleRepository.getArticleByImageUrl(article)
+    override suspend fun getArticleByImageUrl(imageUrl: String): List<ArticleEntity> = articleRepository.getArticleByImageUrl(imageUrl)
     override fun setFavoriteArticle(article: Article, state: Boolean) = articleRepository.setFavoriteArticle(article, state)
 }
