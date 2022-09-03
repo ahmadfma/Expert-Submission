@@ -1,5 +1,6 @@
 package com.app.expertsubmission.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.core.ui.ArticleAdapter
 import com.app.expertsubmission.databinding.FragmentHomeBinding
+import com.app.expertsubmission.ui.detail.DetailActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -29,8 +31,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         articleAdapter = ArticleAdapter {
-            val destination = HomeFragmentDirections.actionNavHomeToNavDetail(it)
-            findNavController().navigate(destination)
+            Intent().apply {
+                setClass(requireActivity(), DetailActivity::class.java)
+                putExtra(DetailActivity.ARTICLE, it)
+                startActivity(this)
+            }
         }
 
         with(binding) {
