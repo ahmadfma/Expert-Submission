@@ -2,6 +2,7 @@ package com.app.expertsubmission.di
 
 import com.app.core.domain.usecase.ArticleInteractor
 import com.app.core.domain.usecase.ArticleUseCase
+import com.app.expertsubmission.MainViewModel
 import com.app.expertsubmission.ui.detail.DetailViewModel
 import com.app.expertsubmission.ui.home.HomeViewModel
 import org.koin.android.viewmodel.dsl.viewModel
@@ -14,4 +15,5 @@ val useCaseModule = module {
 val viewModelModule = module {
     viewModel { HomeViewModel(get()) }
     viewModel { DetailViewModel(get()) }
+    viewModel { MainViewModel(get()) }
 }

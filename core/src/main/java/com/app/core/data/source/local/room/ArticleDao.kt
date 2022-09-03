@@ -16,6 +16,12 @@ interface ArticleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertArticles(articles: List<ArticleEntity>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertArticle(article: ArticleEntity)
+
     @Update
     fun updateArticle(article: ArticleEntity)
+
+    @Query("SELECT * FROM article WHERE urlToImage = :imageUrl")
+    fun getArticleByImageUrl(imageUrl: String): List<ArticleEntity>
 }

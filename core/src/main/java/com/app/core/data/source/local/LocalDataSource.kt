@@ -12,6 +12,10 @@ class LocalDataSource(private val articleDao: ArticleDao) {
 
     suspend fun insertArticles(articles: List<ArticleEntity>) = articleDao.insertArticles(articles)
 
+    suspend fun insertArticle(article: ArticleEntity) = articleDao.insertArticle(article)
+
+    fun getArticleByImageUrl(imageUrl: String) = articleDao.getArticleByImageUrl(imageUrl)
+
     fun setFavoriteArticle(article: ArticleEntity, newState: Boolean) {
         article.isFavorite = newState
         articleDao.updateArticle(article)

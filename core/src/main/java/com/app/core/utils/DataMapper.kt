@@ -20,6 +20,20 @@ object DataMapper {
         )
     }
 
+    fun mapResponseToDomain(input: List<ArticlesItem>): List<Article> = input.map {
+        Article(
+            urlToImage = it.urlToImage,
+            publishedAt = it.publishedAt,
+            author = it.author,
+            description = it.description,
+            sourceName = it.source?.name,
+            title = it.title,
+            url = it.url,
+            content = it.content,
+            isFavorite = false
+        )
+    }
+
     fun mapEntitiesToDomain(input: List<ArticleEntity>): List<Article> = input.map {
         Article(
             urlToImage = it.urlToImage,
