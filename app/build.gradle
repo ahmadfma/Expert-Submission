@@ -47,6 +47,7 @@ dependencies {
     api("androidx.navigation:navigation-ui-ktx:$nav_version")
     api("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
     implementation 'androidx.preference:preference-ktx:1.2.0'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
 }
 kapt {
     correctErrorTypes = true

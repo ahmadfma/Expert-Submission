@@ -25,4 +25,6 @@
     <string name="dark_mode">Dark Mode</string>
     <string name="pengaturan">Pengaturan</string>
     <string name="not_found">Tidak Ditemukan</string>
+    <string name="article_image">Article Image</string>
+    <string name="detail">Detail</string>
 </resources>
