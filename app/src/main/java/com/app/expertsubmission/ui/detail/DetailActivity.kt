@@ -69,10 +69,10 @@ class DetailActivity : AppCompatActivity() {
         var item = article
         val result = viewModel.getArticleByTitle(article.title)
         if(result.isEmpty()) {
-            Log.d("DetailActivity", "result: empty")
+            Log.d("Favorite", "result: ${item.title} EMPTY")
             viewModel.insertArticle(DataMapper.mapDomainToEntity(article))
         } else {
-            Log.d("DetailActivity", "result: not empty")
+            Log.d("Favorite", "result: ${item.title} NOT EMPTY")
             val loadedArticle = DataMapper.mapEntitiesToDomain(result).first()
             item = loadedArticle
             item.isFavorite = article.isFavorite

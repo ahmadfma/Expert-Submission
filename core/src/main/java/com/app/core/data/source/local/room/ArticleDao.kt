@@ -13,10 +13,10 @@ interface ArticleDao {
     @Query("SELECT * FROM article WHERE isFavorite = 1")
     fun getFavoriteArticle(): Flow<List<ArticleEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertArticles(articles: List<ArticleEntity>)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertArticle(article: ArticleEntity)
 
     @Update
