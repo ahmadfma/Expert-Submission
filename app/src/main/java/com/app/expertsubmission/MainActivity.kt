@@ -14,7 +14,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
 import com.app.core.data.Resource
 import com.app.expertsubmission.databinding.ActivityMainBinding
 import com.app.expertsubmission.ui.home.HomeFragment
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
     private val viewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(setOf(R.id.nav_home, R.id.nav_favorite), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
@@ -50,34 +53,18 @@ class MainActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 if (p0 != null) {
-                    search(p0)
+                    searchArticle(p0)
                 }
                 return true
             }
             override fun onQueryTextChange(p0: String?): Boolean = true
         })
 
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            menu.findItem(R.id.action_search).actionView.isVisible = destination.label.toString() != getString(R.string.favorite)
+        }
+
         return true
-    }
-
-    private fun search(keyword: String) {
-        val destLabel = findNavController(R.id.nav_host_fragment_content_main).currentDestination?.label.toString()
-        if(destLabel == getString(R.string.favorite)) {
-            searchFavoriteArticle(keyword)
-        } else {
-            searchArticle(keyword)
-        }
-    }
-
-    private fun searchFavoriteArticle(keyword: String) = lifecycleScope.launch {
-        Log.d("MainActivity", "searchArticle: favorite")
-        viewModel.searchFavoriteArticle(keyword).observe(this@MainActivity) {
-            if(it.isEmpty()) {
-                Toast.makeText(this@MainActivity, "Tidak Ditemukan", Toast.LENGTH_SHORT).show()
-            } else {
-                Log.d("MainActivity", "searchFavoriteArticle: $it")
-            }
-        }
     }
 
     private fun searchArticle(keyword: String) =  lifecycleScope.launch {

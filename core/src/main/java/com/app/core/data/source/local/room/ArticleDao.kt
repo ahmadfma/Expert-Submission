@@ -13,12 +13,6 @@ interface ArticleDao {
     @Query("SELECT * FROM article WHERE isFavorite = 1")
     fun getFavoriteArticle(): Flow<List<ArticleEntity>>
 
-    @Query("SELECT * FROM article " +
-            "WHERE title LIKE :keyword " +
-            "OR description LIKE :keyword " +
-            "OR content LIKE :keyword")
-    fun searchFavoriteArticles(keyword: String): Flow<List<ArticleEntity>>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertArticles(articles: List<ArticleEntity>)
 

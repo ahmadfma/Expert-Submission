@@ -11,7 +11,6 @@ import com.app.core.domain.repository.IArticleRepository
 import com.app.core.utils.AppExecutors
 import com.app.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
 class ArticleRepository constructor(
@@ -34,8 +33,6 @@ class ArticleRepository constructor(
         }.asFlow()
 
     override suspend fun searchArticles(keyword: String): Flow<Resource<List<Article>>> = remoteDataSource.searchArticles(keyword)
-
-    override fun searchFavoriteArticles(keyword: String): Flow<List<ArticleEntity>> = localDataSource.searchFavoriteArticle(keyword)
 
     override fun getFavoriteArticles(): Flow<List<Article>> {
         return localDataSource.getFavoriteArticle().map {

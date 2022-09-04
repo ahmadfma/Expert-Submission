@@ -7,6 +7,7 @@ import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.app.core.R
+import com.app.core.domain.model.Article
 import com.app.core.utils.DataMapper
 import com.app.expertsubmission.databinding.ActivityDetailBinding
 import com.bumptech.glide.Glide
@@ -36,31 +37,32 @@ class DetailActivity : AppCompatActivity() {
                 articleTitle.text = article.title
                 articleContent.text = article.content
                 articleSource.text = article.sourceName
-                var statusFavorite = article.isFavorite
-                setStatusFavorite(statusFavorite)
+                setStatusFavorite(article)
                 favBtn.setOnClickListener {
-                    statusFavorite = !statusFavorite
-                    viewModel.setFavoriteArticle(article, statusFavorite)
-                    setStatusFavorite(statusFavorite)
+                    article.isFavorite = !article.isFavorite
+                    viewModel.setFavoriteArticle(article, article.isFavorite)
+                    setStatusFavorite(article)
                 }
             }
         }
     }
 
-    private fun setStatusFavorite(statusFavorite: Boolean) = lifecycleScope.launch {
-        viewModel.selectedArticle?.let { article ->
-            val result = viewModel.getArticleByImageUrl(article.urlToImage)
-            if(result.isEmpty()) {
-                Log.d("DetailActivity", "result: empty")
-                viewModel.insertArticle(DataMapper.mapDomainToEntity(article))
-            } else {
-                Log.d("DetailActivity", "result: not empty")
-            }
-            if (statusFavorite) {
-                binding.favBtn.setImageDrawable(ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_fav))
-            } else {
-                binding.favBtn.setImageDrawable(ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_fav_border))
-            }
+    private fun setStatusFavorite(article: Article) = lifecycleScope.launch {
+        var item = article
+        val result = viewModel.getArticleByImageUrl(article.urlToImage)
+        if(result.isEmpty()) {
+            Log.d("DetailActivity", "result: empty")
+            viewModel.insertArticle(DataMapper.mapDomainToEntity(article))
+        } else {
+            Log.d("DetailActivity", "result: not empty")
+            val loadedArticle = DataMapper.mapEntitiesToDomain(result).first()
+            item = loadedArticle
+            item.isFavorite = article.isFavorite
+        }
+        if (item.isFavorite) {
+            binding.favBtn.setImageDrawable(ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_fav))
+        } else {
+            binding.favBtn.setImageDrawable(ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_fav_border))
         }
     }
 

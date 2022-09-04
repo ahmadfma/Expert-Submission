@@ -11,8 +11,6 @@ interface ArticleUseCase {
 
     suspend fun searchArticle(keyword: String): Flow<Resource<List<Article>>>
 
-    fun searchFavoriteArticle(keyword: String): Flow<List<ArticleEntity>>
-
     fun getFavoriteArticles(): Flow<List<Article>>
 
     suspend fun insertArticle(article: ArticleEntity)
