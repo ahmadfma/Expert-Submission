@@ -7,10 +7,14 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "article")
 data class ArticleEntity(
+
     @PrimaryKey
     @NonNull
+    @ColumnInfo(name = "title")
+    val title: String,
+
     @ColumnInfo(name = "urlToImage")
-    val urlToImage: String,
+    val urlToImage: String? = null,
 
     @ColumnInfo(name = "publishedAt")
     val publishedAt: String? = null,
@@ -23,9 +27,6 @@ data class ArticleEntity(
 
     @ColumnInfo(name = "sourceName")
     val sourceName: String? = null,
-
-    @ColumnInfo(name = "title")
-    val title: String? = null,
 
     @ColumnInfo(name = "url")
     val url: String? = null,

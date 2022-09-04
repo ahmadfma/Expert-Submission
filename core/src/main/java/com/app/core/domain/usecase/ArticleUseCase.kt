@@ -15,7 +15,7 @@ interface ArticleUseCase {
 
     suspend fun insertArticle(article: ArticleEntity)
 
-    suspend fun getArticleByImageUrl(imageUrl: String): List<ArticleEntity>
+    suspend fun getArticleByTitle(title: String): List<ArticleEntity>
 
     fun setFavoriteArticle(article: Article, state: Boolean)
 

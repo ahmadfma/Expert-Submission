@@ -49,7 +49,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setStatusFavorite(article: Article) = lifecycleScope.launch {
         var item = article
-        val result = viewModel.getArticleByImageUrl(article.urlToImage)
+        val result = viewModel.getArticleByTitle(article.title)
         if(result.isEmpty()) {
             Log.d("DetailActivity", "result: empty")
             viewModel.insertArticle(DataMapper.mapDomainToEntity(article))

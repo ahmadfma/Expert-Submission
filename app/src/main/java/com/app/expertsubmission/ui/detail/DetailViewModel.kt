@@ -12,6 +12,6 @@ class DetailViewModel (private val articleUseCase: ArticleUseCase) : ViewModel()
 
     suspend fun insertArticle(article: ArticleEntity) = articleUseCase.insertArticle(article)
 
-    suspend fun getArticleByImageUrl(imageUrl: String) = articleUseCase.getArticleByImageUrl(imageUrl)
+    suspend fun getArticleByTitle(title: String) = articleUseCase.getArticleByTitle(title)
 
 }

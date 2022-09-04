@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.app.core.R
 import com.app.core.databinding.ItemArticleBinding
 import com.app.core.domain.model.Article
 import com.bumptech.glide.Glide
@@ -15,6 +16,8 @@ class ArticleAdapter(private val onClick: (Article) -> Unit): RecyclerView.Adapt
         fun bind(article: Article) = with(binding) {
             Glide.with(this.root)
                 .load(article.urlToImage)
+                .placeholder(R.color.grey)
+                .error(R.color.grey)
                 .into(articleImage)
             articleTitle.text = article.title
             articleDesc.text = article.description
