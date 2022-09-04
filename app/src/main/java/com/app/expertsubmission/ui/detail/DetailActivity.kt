@@ -1,5 +1,7 @@
 package com.app.expertsubmission.ui.detail
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -44,6 +46,11 @@ class DetailActivity : AppCompatActivity() {
                     setStatusFavorite(article)
                 }
             }
+        }
+        bacaSelengkapnyaBtn.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(viewModel.selectedArticle?.url)
+            startActivity(intent)
         }
     }
 
