@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.core.R
 import com.app.core.databinding.ItemArticleBinding
 import com.app.core.domain.model.Article
+import com.app.core.utils.DateTime
 import com.bumptech.glide.Glide
 
 class ArticleAdapter(private val onClick: (Article) -> Unit): RecyclerView.Adapter<ArticleAdapter.Holder>() {
@@ -24,7 +25,7 @@ class ArticleAdapter(private val onClick: (Article) -> Unit): RecyclerView.Adapt
                 .into(articleImage)
             articleTitle.text = article.title
             articleDesc.text = article.description
-            articleSource.text = StringBuilder().append("${article.sourceName} - ${article.publishedAt}")
+            articleSource.text = StringBuilder().append("${article.sourceName} - ${article.publishedAt?.let { DateTime.getPublishTime(it) }}")
             this.root.setOnClickListener {
                 onClick(article)
             }

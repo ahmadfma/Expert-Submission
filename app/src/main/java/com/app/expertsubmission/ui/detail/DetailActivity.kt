@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import com.app.core.R
 import com.app.core.domain.model.Article
 import com.app.core.utils.DataMapper
+import com.app.core.utils.DateTime
 import com.app.expertsubmission.databinding.ActivityDetailBinding
 import com.bumptech.glide.Glide
 import kotlinx.coroutines.launch
@@ -39,7 +40,9 @@ class DetailActivity : AppCompatActivity() {
                     .into(articleImage)
                 articleTitle.text = article.title
                 articleContent.text = article.content
-                articleSource.text = article.sourceName
+                articleSource.text = StringBuilder(article.sourceName.toString()).append(" - ${article.publishedAt?.let {
+                    DateTime.getPublishTime(it)
+                }}")
                 setStatusFavorite(article)
                 favBtn.setOnClickListener {
                     article.isFavorite = !article.isFavorite
