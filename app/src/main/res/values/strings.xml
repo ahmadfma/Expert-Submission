@@ -17,4 +17,33 @@
     <string name="title_favorite">Favorite</string>
     <string name="search">Search</string>
     <string name="baca_selengkapnya">Baca Selengkapnya</string>
+    <string name="title_activity_setting">SettingActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <!-- Night Mode Preferences -->
+    <string name="pref_dark_title">Dark mode</string>
+    <string name="pref_key_dark" translatable="false">key_dark_mode</string>
+    <string name="pref_dark_follow_system" translatable="false">follow_system</string>
+    <string name="pref_dark_on" translatable="false">on</string>
+    <string name="pref_dark_off" translatable="false">off</string>
+    <string name="dark_mode_auto">Automatic</string>
+    <string name="dark_mode_on">Dark mode</string>
+    <string name="dark_mode_off">Light mode</string>
+    <string name="tema">Tema Aplikasi</string>
+    <string name="pref_dark_mode">key_dark_mode</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="pengaturan">Pengaturan</string>
 </resources>
