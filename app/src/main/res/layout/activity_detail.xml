@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.detail.DetailFragment">
+    tools:context=".ui.detail.DetailActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingBottom="50dp">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -20,8 +21,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/example"
                 android:scaleType="centerCrop"
+                android:src="@drawable/example"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -32,9 +33,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/horizontalMargin"
+                android:fontFamily="@font/be_vietnam_bold"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/articleImage"
@@ -44,10 +45,11 @@
                 android:id="@+id/articleSource"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black8"
-                android:textSize="12sp"
                 android:layout_marginStart="@dimen/horizontalMargin"
                 android:layout_marginTop="@dimen/smallMargin"
+                android:fontFamily="@font/be_vietnam"
+                android:textColor="@color/black8"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/articleTitle"
                 tools:text="Kompas.com - 1 hari yang lalu" />
@@ -56,10 +58,11 @@
                 android:id="@+id/articleContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:layout_marginStart="@dimen/horizontalMargin"
-                android:layout_marginEnd="@dimen/horizontalMargin"
                 android:layout_marginTop="@dimen/smallMargin"
+                android:layout_marginEnd="@dimen/horizontalMargin"
+                android:fontFamily="@font/be_vietnam"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/articleSource"
@@ -72,11 +75,11 @@
         android:id="@+id/favBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="@dimen/horizontalMargin"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/favorite_button"
         android:src="@drawable/ic_fav"
-        app:tint="@color/white"
-        android:contentDescription="@string/favorite_button" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

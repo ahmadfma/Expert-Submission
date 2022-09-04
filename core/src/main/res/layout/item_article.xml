@@ -25,7 +25,7 @@
         android:layout_marginTop="6dp"
         android:layout_marginEnd="@dimen/horizontalMargin"
         android:textColor="@color/black"
-        android:textStyle="bold"
+        android:fontFamily="@font/be_vietnam_bold"
         tools:text="Ini Kronologis Putra Ridwan Kamil Hilang Terseret Arus di Swiss" />
 
     <TextView
@@ -37,6 +37,7 @@
         android:layout_marginEnd="@dimen/horizontalMargin"
         android:ellipsize="end"
         android:maxLines="3"
+        android:fontFamily="@font/be_vietnam"
         android:textColor="@color/black"
         tools:text="@tools:sample/lorem/random" />
 
@@ -48,6 +49,7 @@
         android:layout_marginStart="@dimen/horizontalMargin"
         android:layout_marginEnd="@dimen/horizontalMargin"
         android:textSize="12sp"
+        android:fontFamily="@font/be_vietnam"
         tools:text="Kompas.com - 1  hari yang lalu" />
 
     <View
