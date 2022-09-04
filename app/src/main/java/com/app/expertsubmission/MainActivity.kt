@@ -1,5 +1,6 @@
 package com.app.expertsubmission
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -20,6 +21,7 @@ import androidx.navigation.NavController
 import com.app.core.data.Resource
 import com.app.expertsubmission.databinding.ActivityMainBinding
 import com.app.expertsubmission.ui.home.HomeFragment
+import com.app.expertsubmission.ui.setting.SettingActivity
 import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -90,8 +92,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.action_settings -> {
-                val asd = findNavController(R.id.nav_host_fragment_content_main).currentDestination
-                Log.d("MainActivity", "currentDestination: $asd")
+                startActivity(Intent(this, SettingActivity::class.java))
             }
         }
         return super.onOptionsItemSelected(item)
