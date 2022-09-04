@@ -53,6 +53,7 @@
         tools:text="Kompas.com - 1  hari yang lalu" />
 
     <View
+        android:id="@+id/horizontalLine"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="@dimen/horizontalMargin"

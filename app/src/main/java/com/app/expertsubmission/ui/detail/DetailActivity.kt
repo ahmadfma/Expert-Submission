@@ -1,6 +1,7 @@
 package com.app.expertsubmission.ui.detail
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -51,6 +52,13 @@ class DetailActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(viewModel.selectedArticle?.url)
             startActivity(intent)
+        }
+        when (this@DetailActivity.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
+            Configuration.UI_MODE_NIGHT_YES -> {
+                articleTitle.setTextColor(this@DetailActivity.resources.getColor(R.color.white, null))
+                articleSource.setTextColor(this@DetailActivity.resources.getColor(R.color.grey, null))
+                articleContent.setTextColor(this@DetailActivity.resources.getColor(R.color.white, null))
+            }
         }
     }
 

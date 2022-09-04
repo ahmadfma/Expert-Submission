@@ -1,6 +1,8 @@
 package com.app.core.ui
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +13,7 @@ import com.bumptech.glide.Glide
 
 class ArticleAdapter(private val onClick: (Article) -> Unit): RecyclerView.Adapter<ArticleAdapter.Holder>() {
     private val listArticle = mutableListOf<Article>()
+    private lateinit var context: Context
 
     inner class Holder(private val binding: ItemArticleBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(article: Article) = with(binding) {
@@ -25,6 +28,16 @@ class ArticleAdapter(private val onClick: (Article) -> Unit): RecyclerView.Adapt
             this.root.setOnClickListener {
                 onClick(article)
             }
+
+            when (context.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
+                Configuration.UI_MODE_NIGHT_YES -> {
+                    articleTitle.setTextColor(context.resources.getColor(R.color.white, null))
+                    articleDesc.setTextColor(context.resources.getColor(R.color.white, null))
+                    articleDesc.setTextColor(context.resources.getColor(R.color.white, null))
+                    horizontalLine.setBackgroundColor(context.resources.getColor(R.color.black8, null))
+                }
+            }
+
         }
     }
 
@@ -36,6 +49,7 @@ class ArticleAdapter(private val onClick: (Article) -> Unit): RecyclerView.Adapt
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+        context = parent.context
         val view = ItemArticleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return Holder(view)
     }
