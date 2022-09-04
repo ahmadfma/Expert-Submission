@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.app.core.data.Resource
 import com.app.core.ui.ArticleAdapter
 import com.app.expertsubmission.ui.detail.DetailActivity
 import com.app.favorite.databinding.FragmentListFavoriteBinding

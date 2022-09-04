@@ -1,5 +1,6 @@
 package com.app.expertsubmission.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,8 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.core.ui.ArticleAdapter
 import com.app.expertsubmission.databinding.FragmentHomeBinding
@@ -54,7 +53,7 @@ class HomeFragment : Fragment() {
                 }
                 is com.app.core.data.Resource.Success -> {
                     showProgressBar(false)
-                    it.data?.let { it1 -> articleAdapter.setData(it1) }
+                    it.data?.let { it1 -> articleAdapter?.setData(it1) }
                 }
             }
         }
@@ -73,11 +72,13 @@ class HomeFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        articleAdapter = null
     }
 
     companion object {
         private const val TAG = "HomeFragment"
-        lateinit var articleAdapter: ArticleAdapter
+        @SuppressLint("StaticFieldLeak")
+        var articleAdapter: ArticleAdapter? = null
     }
 
 }

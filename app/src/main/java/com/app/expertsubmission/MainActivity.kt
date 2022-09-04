@@ -80,9 +80,9 @@ class MainActivity : AppCompatActivity() {
                 is Resource.Success -> {
                     val data = it.data
                     if(data != null && data.isNotEmpty()) {
-                        HomeFragment.articleAdapter.setData(data)
+                        HomeFragment.articleAdapter?.setData(data)
                     } else {
-                        Toast.makeText(this@MainActivity, "Tidak Ditemukan", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@MainActivity, getString(R.string.not_found), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
