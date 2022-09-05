@@ -50,13 +50,13 @@ object DateTime {
     private fun getFormatTimePublish(time: String): String {
         val arr = time.split("T")
 
-        val tanggal = arr[0].split("-".toRegex()).toTypedArray()
-        val waktu = arr[1].split(":".toRegex()).toTypedArray()
+        val date = arr[0].split("-".toRegex()).toTypedArray()
+        val hour = arr[1].split(":".toRegex()).toTypedArray()
 
-        val tempTanggal = tanggal[1] + "/" + tanggal[2] + "/" + tanggal[0]
-        val tempWaktu = waktu[0] + ":" + waktu[2] + ":" + waktu[1]
+        val tempDate = date[1] + "/" + date[2] + "/" + date[0]
+        val tempHour = hour[0] + ":" + hour[2] + ":" + hour[1]
 
-        return "$tempTanggal $tempWaktu"
+        return "$tempDate $tempHour"
     }
 
     private fun getFormatCurrentTime(): String {
