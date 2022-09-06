@@ -42,7 +42,7 @@ class ListFavoriteFragment : Fragment() {
             } else {
                 binding.rvArticles.visibility = View.VISIBLE
                 binding.emptyInfoFavorite.root.visibility = View.GONE
-                articleAdapter.setData(it)
+                articleAdapter.submitList(it)
             }
         }
         with(binding) {

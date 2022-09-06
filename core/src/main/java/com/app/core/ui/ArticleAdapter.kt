@@ -1,10 +1,11 @@
 package com.app.core.ui
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.app.core.R
 import com.app.core.databinding.ItemArticleBinding
@@ -12,8 +13,7 @@ import com.app.core.domain.model.Article
 import com.app.core.utils.DateTime
 import com.bumptech.glide.Glide
 
-class ArticleAdapter(private val onClick: (Article) -> Unit): RecyclerView.Adapter<ArticleAdapter.Holder>() {
-    private val listArticle = mutableListOf<Article>()
+class ArticleAdapter(private val onClick: (Article) -> Unit): ListAdapter<Article, ArticleAdapter.Holder>(DIFF_CALLBACK) {
     private lateinit var context: Context
 
     inner class Holder(private val binding: ItemArticleBinding): RecyclerView.ViewHolder(binding.root) {
@@ -42,21 +42,25 @@ class ArticleAdapter(private val onClick: (Article) -> Unit): RecyclerView.Adapt
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun setData(articles: List<Article>) {
-        this.listArticle.clear()
-        this.listArticle.addAll(articles)
-        notifyDataSetChanged()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         context = parent.context
         val view = ItemArticleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return Holder(view)
     }
 
-    override fun onBindViewHolder(holder: Holder, position: Int) = holder.bind(listArticle[position])
+    override fun onBindViewHolder(holder: Holder, position: Int) = holder.bind(getItem(position))
 
-    override fun getItemCount(): Int = listArticle.size
+    companion object {
+        val DIFF_CALLBACK: DiffUtil.ItemCallback<Article> =
+            object : DiffUtil.ItemCallback<Article>() {
+                override fun areItemsTheSame(old: Article, new: Article): Boolean {
+                    return old.title == new.title
+                }
+
+                override fun areContentsTheSame(old: Article, new: Article): Boolean {
+                    return old == new
+                }
+            }
+    }
 
 }

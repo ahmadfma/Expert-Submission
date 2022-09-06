@@ -62,7 +62,7 @@ class SearchActivity : AppCompatActivity() {
                     if(data != null && data.isNotEmpty()) {
                         showEmpty(false)
                         showData()
-                        articleAdapter.setData(data)
+                        articleAdapter.submitList(data)
                     } else {
                         showEmpty(true)
                     }

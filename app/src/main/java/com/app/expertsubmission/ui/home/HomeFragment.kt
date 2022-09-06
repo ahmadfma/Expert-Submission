@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
                 }
                 is com.app.core.data.Resource.Success -> {
                     showProgressBar(false)
-                    it.data?.let { it1 -> articleAdapter.setData(it1) }
+                    it.data?.let { it1 -> articleAdapter.submitList(it1) }
                 }
             }
         }
