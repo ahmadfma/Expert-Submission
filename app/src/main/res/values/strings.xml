@@ -11,6 +11,7 @@
     <string name="favorite_button">Favorite Button</string>
     <string name="search">Search</string>
     <string name="baca_selengkapnya">Baca Selengkapnya</string>
+    <string name="belum_ada_data">Belum ada data</string>
 
     <!-- Night Mode Preferences -->
     <string name="pref_key_dark" translatable="false">key_dark_mode</string>
@@ -27,4 +28,7 @@
     <string name="not_found">Tidak Ditemukan</string>
     <string name="article_image">Article Image</string>
     <string name="detail">Detail</string>
+    <string name="mencari">Mencari :</string>
+    <string name="pencarian">Pencarian</string>
+    <string name="tidak_ditemukan">Tidak ditemukan</string>
 </resources>

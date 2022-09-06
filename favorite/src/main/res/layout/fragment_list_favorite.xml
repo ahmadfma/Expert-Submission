@@ -13,8 +13,8 @@
         tools:listitem="@layout/item_article"/>
 
     <include
-        android:id="@+id/emptyInfo"
-        layout="@layout/empty_layout"
+        android:id="@+id/emptyInfoFavorite"
+        layout="@layout/empty_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"

@@ -17,11 +17,15 @@
         android:theme="@style/Theme.ExpertSubmission"
         tools:targetApi="31">
         <activity
-            android:name=".ui.setting.SettingActivity"
+            android:name=".ui.search.SearchActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"
-            android:label="@string/pengaturan" />
-
+            android:label="@string/pencarian"/>
+        <activity
+            android:name=".ui.setting.SettingActivity"
+            android:exported="false"
+            android:label="@string/pengaturan"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.detail.DetailActivity"
             android:exported="false" />

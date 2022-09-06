@@ -2,11 +2,9 @@ package com.app.expertsubmission
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
-import android.widget.Toast
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -16,21 +14,16 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import com.app.core.data.Resource
 import com.app.expertsubmission.databinding.ActivityMainBinding
-import com.app.expertsubmission.ui.home.HomeFragment
+import com.app.expertsubmission.ui.search.SearchActivity
 import com.app.expertsubmission.ui.setting.SettingActivity
-import kotlinx.coroutines.launch
-import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private val viewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,24 +62,10 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    private fun searchArticle(keyword: String) =  lifecycleScope.launch {
-        Log.d("MainActivity", "searchArticle: all")
-        viewModel.searchArticle(keyword).observe(this@MainActivity) {
-            when(it) {
-                is Resource.Loading -> {}
-                is Resource.Error -> {
-                    Toast.makeText(this@MainActivity, it.message, Toast.LENGTH_SHORT).show()
-                }
-                is Resource.Success -> {
-                    val data = it.data
-                    if(data != null && data.isNotEmpty()) {
-                        HomeFragment.articleAdapter?.setData(data)
-                    } else {
-                        Toast.makeText(this@MainActivity, getString(R.string.not_found), Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-        }
+    private fun searchArticle(keyword: String) = Intent().apply {
+        setClass(this@MainActivity, SearchActivity::class.java)
+        putExtra(SearchActivity.KEYWORD, keyword)
+        startActivity(this)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

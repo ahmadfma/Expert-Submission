@@ -37,11 +37,11 @@ class ListFavoriteFragment : Fragment() {
         }
         viewModel.getFavoriteArticles().observe(viewLifecycleOwner) {
             if(it.isEmpty()) {
-                binding.emptyInfo.root.visibility = View.VISIBLE
                 binding.rvArticles.visibility = View.GONE
+                binding.emptyInfoFavorite.root.visibility = View.VISIBLE
             } else {
-                binding.emptyInfo.root.visibility = View.GONE
                 binding.rvArticles.visibility = View.VISIBLE
+                binding.emptyInfoFavorite.root.visibility = View.GONE
                 articleAdapter.setData(it)
             }
         }

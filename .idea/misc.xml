@@ -8,11 +8,15 @@
         <entry key="..\:/Me/Android/Expert-Submission/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1445" />
         <entry key="..\:/Me/Android/Expert-Submission/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.127" />
         <entry key="..\:/Me/Android/Expert-Submission/app/src/main/res/drawable/ic_setting.xml" value="0.162" />
+        <entry key="..\:/Me/Android/Expert-Submission/app/src/main/res/drawable/ic_warning.xml" value="0.185" />
         <entry key="..\:/Me/Android/Expert-Submission/app/src/main/res/layout/activity_detail.xml" value="0.259375" />
         <entry key="..\:/Me/Android/Expert-Submission/app/src/main/res/layout/activity_main.xml" value="0.24259259259259258" />
+        <entry key="..\:/Me/Android/Expert-Submission/app/src/main/res/layout/activity_search.xml" value="0.2453125" />
         <entry key="..\:/Me/Android/Expert-Submission/app/src/main/res/layout/activity_setting.xml" value="0.259375" />
         <entry key="..\:/Me/Android/Expert-Submission/app/src/main/res/layout/app_bar_main.xml" value="0.18703703703703703" />
         <entry key="..\:/Me/Android/Expert-Submission/app/src/main/res/layout/content_main.xml" value="0.1" />
+        <entry key="..\:/Me/Android/Expert-Submission/app/src/main/res/layout/empty_info_layout.xml" value="0.259375" />
+        <entry key="..\:/Me/Android/Expert-Submission/app/src/main/res/layout/empty_layout.xml" value="0.259375" />
         <entry key="..\:/Me/Android/Expert-Submission/app/src/main/res/layout/fragment_detail.xml" value="0.259375" />
         <entry key="..\:/Me/Android/Expert-Submission/app/src/main/res/layout/fragment_search.xml" value="0.2453125" />
         <entry key="..\:/Me/Android/Expert-Submission/app/src/main/res/layout/settings_activity.xml" value="0.24153846153846154" />
@@ -23,6 +27,7 @@
         <entry key="..\:/Me/Android/Expert-Submission/core/src/main/res/font/be_vietnam_bold.xml" value="0.2462962962962963" />
         <entry key="..\:/Me/Android/Expert-Submission/core/src/main/res/layout/item_article.xml" value="0.264" />
         <entry key="..\:/Me/Android/Expert-Submission/favorite/src/main/res/drawable/ic_warning.xml" value="0.1625" />
+        <entry key="..\:/Me/Android/Expert-Submission/favorite/src/main/res/layout/empty_info.xml" value="0.259375" />
         <entry key="..\:/Me/Android/Expert-Submission/favorite/src/main/res/layout/empty_layout.xml" value="0.259375" />
         <entry key="..\:/Me/Android/Expert-Submission/favorite/src/main/res/layout/fragment_list_favorite.xml" value="0.2553846153846154" />
         <entry key="..\:/Me/Android/ExpertSubmission/app/src/main/res/drawable/ic_fav.xml" value="0.192" />

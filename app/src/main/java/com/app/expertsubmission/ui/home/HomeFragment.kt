@@ -1,6 +1,5 @@
 package com.app.expertsubmission.ui.home
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -20,6 +19,7 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModel()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private lateinit var articleAdapter: ArticleAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
                 }
                 is com.app.core.data.Resource.Success -> {
                     showProgressBar(false)
-                    it.data?.let { it1 -> articleAdapter?.setData(it1) }
+                    it.data?.let { it1 -> articleAdapter.setData(it1) }
                 }
             }
         }
@@ -72,13 +72,10 @@ class HomeFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        articleAdapter = null
     }
 
     companion object {
         private const val TAG = "HomeFragment"
-        @SuppressLint("StaticFieldLeak")
-        var articleAdapter: ArticleAdapter? = null
     }
 
 }
